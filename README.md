@@ -63,20 +63,6 @@ Please then not all at once, but always first only individually.
 
 
 
-## PCB
-
-The PCB can either be ordered directly from [PCBWay](https://www.pcbway.com/project/shareproject/Commodore_CP_M_Cartridge.html), or you can create it yourself from the Gerber files available here.
-
-[![PCBWay](https://www.pcbway.com/project/img/images/frompcbway.png)](https://www.pcbway.com/project/shareproject/Commodore_CP_M_Cartridge.html)
-
-If you liked my project, I would be very happy about a small coffee donation.
-
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R62T6RN)
-
-
-
-
-
 # License
 
 The contents of this repository, with the exception of the Docs and Software directories, are released under the following license:
