@@ -1,70 +1,47 @@
-# Commodore CP/M Cartridge for Commodore C64
-
-
+# Commodore CP/M Cartridge für den Commodore C64
 
 ![](https://codeberg.org/diwou/Commodore_CPM_Cartridge/raw/branch/main/Images/Commodore_CPM_Cartridge.jpg)
 
+Dies ist ein Nachbau der Commodore CP/M-Cartridge, mit der es möglich war, CP/M in Version 2.2 zu verwenden.
 
+## Einführung
 
-This is a replica of the Commodore CP/M cartridge, with which it was possible to use CP/M in version 2.2.
+Im Rahmen meines anderen Z80-Cartridge-Projekts hier auf GitHub hatte ich zunächst die originale Commodore CP/M-Cartridge zu Analysezwecken nachgebaut.
 
+Ich habe mich dabei so nah wie möglich an das Originallayout gehalten und nur ein paar Footprints an die aktuelle Teileverfügbarkeit angepasst. Die Platine ist in Abmessungen und Bohrungen identisch zur Originalplatine und passt daher auch ins Gehäuse der Commodore-Version.
 
+Aufgrund der 1:1-Reproduktion hat diese Cartridge natürlich auch alle entsprechenden „Probleme“ hinsichtlich der Kompatibilität.
 
-## Introduction
+Ich konnte die Karte sowohl in einer 407er- als auch in einer 469er-Platine problemlos betreiben. Der verwendete VIC spielte offenbar keine Rolle.
 
-In the course of my other Z80 cartridge project here on GitHub, I had first rebuilt the original Commodore CP/M cartridge for analysis purposes.
+Die verwendeten Komponenten auf der CP/M-Platine hingegen schon.
 
-I kept as much as possible to the original board and only adapted a few footprints to the current parts supply. The board is identical to the original board in dimensions and drillings, so that it also fits into the case of the Commodore version.
+Normalerweise sind „LS“-Typen stabiler als andere Varianten. In einem meiner Tests konnte ich mit „S“-Typen keine stabile Funktion erreichen.
 
-Due to the 1:1 reproduction, this cartridge has of course all the corresponding "problems" in terms of compatibility.
+## Komponenten
 
-I have the card in both 407er, as well as 469 board to run without problems. The installed VIC apparently played no role.
+Die gesamte Schaltung besteht nur aus ein paar TTL-Bausteinen und einem 4 MHz-Quarz. Die Software liegt auf einer 2732-EPROM.
 
-But the used components on the CP/M board do play a role.
+Die Belegung der EPROM ist gleich zur Original-Cartridge. Ein passendes Abbild liegt dem Repository bei.
 
-Normally "LS" types should be used, thus 74LS00, 75LS04, etc..
+Einige der TTLs sind mit dem C64 verbunden und teilweise „zeitkritisch“ zu behandeln. Andere steuern lediglich das Reset, Clock-Handling oder die Chip-Select-Signale.
 
-But it also helps to try "ALS" and "HCT" types here and there. Unfortunately, I cannot give an ideal recipe here. Only the hint that in the 407 board everything in "LS" is without problems.
+Die Unterschiede zu meiner neueren Z80-Cartridge bestehen vor allem in der Art der Ansteuerung, in der Taktverarbeitung und im Timing.
 
+Das Board hat im Test sehr zuverlässig funktioniert – unter der Voraussetzung, dass exakt passende Bauteile verwendet wurden. Bereits kleine Abweichungen, z. B. ein anderer Hersteller, können zu Instabilitäten führen.
 
+## Hinweise
 
-## BOM
+Da es sich um eine 1:1-Rekonstruktion handelt, dient diese Platine vor allem zu historischen bzw. Vergleichszwecken.
 
-As mentioned earlier, this parts list should work exactly the same on the older boards. If there are problems, you can try to exchange single parts against "ALS" or "HCT" types. A version with 4MHZ is also sufficient for the CPU.
+Wer eine stabile und moderne Lösung für CP/M auf dem C64 sucht, sollte sich die [Z80-Karte für den Commodore C64](https://codeberg.org/diwou/Z80-Card_for_Commodore_C64) ansehen.
 
-Please then not all at once, but always first only individually.
+Diese bietet deutlich höhere Stabilität, volle 8 MHz Z80-Taktung und ist in CPLD-Technik realisiert, wodurch die Probleme der Originalversion umgangen werden.
 
+## Lizenz
 
+Der Inhalt dieses Repositories steht unter der folgenden Lizenz:
 
-| #    | Manufacturer          | Part Number      | Case   | Description                                                  | Quantity |
-| ---- | --------------------- | ---------------- | ------ | ------------------------------------------------------------ | -------- |
-| 1    | Central Semiconductor | 2N3906           | TO-92  | Bipolar  Transistor PNP Amplifier/Switch 40V 200mA 3-Pin TO-92 Through Hole Box | 1        |
-| 2    | Fair-Rite             | 2743005112       | Axial  | Ferrite  Beads Axial 91Ohm 100MHz T/R                        | 6        |
-| 3    | Vishay BCcomponents   | A100J15C0GF5TAA  | Axial  | Cap Ceramic  10pF 50V C0G 5% Axial 125C T/R                  | 6        |
-| 4    | Vishay  BCcomponents  | A470J15C0GF5TAA  | Axial  | Cap  Ceramic 47pF 50V C0G 5% Axial 125C T/R                  | 1        |
-| 5    | KEMET                 | C330C104J5R5TA   | Dipped | Cap Ceramic  0.1uF 50V X7R 5% Radial 5.08mm 125C Bulk        | 12       |
-| 6    | Yageo                 | CFR-25JB-52-1K2  | Axial  | RES  1.2K OHM 1/4W 5% AXIAL                                  | 1        |
-| 7    | Yageo                 | CFR-25JB-52-2K2  | Axial  | RES 2.2K OHM  1/4W 5% AXIAL                                  | 5        |
-| 8    | Yageo                 | CFR-25JB-52-22R  | Axial  | RES  22 OHM 1/4W 5% AXIAL                                    | 1        |
-| 9    | Yageo                 | CFR-25JB-52-220R | Axial  | RES 220 OHM  1/4W 5% AXIAL                                   | 1        |
-| 10   | Vishay  Dale          | CSC09A014K70GPA  | SIP    | Resistor  Networks & Arrays 9pin 4.7Kohms 2% Bussed          | 3        |
-| 11   | Vishay                | MAL203036479E3   | Axial  | Cap Aluminum  47uF 25V -10% to 50% (6 X 10mm) Axial 4.8 Ohm 100mA 3000 hr 85C Taped in Box | 1        |
-| 12   | Texas  Instruments    | SN74LS00N        | PDIP   | IC,  74LS, 74LS00, DIP14, 5.25V                              | 1        |
-| 13   | Texas Instruments     | SN74LS04N        | PDIP   | IC HEX INVERTER  14-DIP                                      | 1        |
-| 14   | Texas  Instruments    | SN74LS12N        | PDIP   | Logic  Gates Triple 3-input Positive-NAND gates with open collector outputs 14-PDIP  0 to 70 | 1        |
-| 15   | Texas Instruments     | SN74LS74AN       | PDIP   | TEXAS  INSTRUMENTS  SN74LS74AN  Flip-Flop, with Set and Reset,  Complementary Output, Differential, Positive Edge, D, 13 ns, 33 MHz | 2        |
-| 16   | Texas  Instruments    | SN74LS245N       | PDIP   | IC  TXRX NON-INVERT 5.25V 20DIP                              | 3        |
-| 17   | ON Semiconductor      | SN74LS283N       | PDIP   | Binary Full  Adder Single 4-Bit 16-Pin PDIP Box              | 1        |
-| 18   | ON  Semiconductor     | SN74LS367AN      | PDIP   | I.C.  SN74LS 367 AN                                          | 1        |
-| 19   | Texas Instruments     | SN74LS373N       | PDIP   | Latch  Transparent 3-ST 8-CH D-Type 20-Pin PDIP Tube         | 1        |
-| 20   | Ixys  Zilog           | Z84C0008PEG      | DIP    | IC  MPU Z80 8MHZ 40DIP                                       | 1        |
-
-------
-
-
-
-# License
-
-The contents of this repository, with the exception of the Docs and Software directories, are released under the following license:
-
-- the "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License" (CC BY-NC-SA 4.0) full text of this license is included in the [LICENSE.CC-NC-BY-SA-4.0](https://codeberg.org/diwou/Commodore_CPM_Cartridge/raw/branch/main/LICENSE.CC-NC-BY-SA) file and a copy can also be found at https://creativecommons.org/licenses/by-nc-sa/4.0/
+**Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License (CC BY-NC-SA 4.0)**  
+Der vollständige Lizenztext befindet sich in der Datei [LICENSE.CC-NC-BY-SA-4.0](https://codeberg.org/diwou/Commodore_CPM_Cartridge/raw/branch/main/LICENSE.CC-NC-BY-SA)  
+Und ist auch online verfügbar unter: https://creativecommons.org/licenses/by-nc-sa/4.0/
